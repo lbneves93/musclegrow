@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  port: 5432
+
+development:
+  <<: *default
+  database: musclegrow_development
+  url: postgresql://user:mypass@dbhost
+
+test:
+  <<: *default
+  database: musclegrow_test
+  url: postgresql://user:mypass@dbhost
+
+staging:
+  <<: *default
+  database: musclegrow_staging
+  host: <%= Rails.application.credentials.dig(:staging, :db_host) %>
+  username: <%= Rails.application.credentials.dig(:staging, :db_user) %>
+  password: <%= Rails.application.credentials.dig(:staging, :db_password) %>

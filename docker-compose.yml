@@ -1,0 +1,35 @@
+version: "3.9"
+volumes:
+  gems_musclegrow:
+
+services:
+  web: 
+    build: .
+    links:
+      - db:dbhost
+    volumes:
+      - gems_musclegrow:/usr/local/bundle
+      - .:/app
+    ports: 
+      - "3000:3000"
+  
+  staging:
+    build: .
+    environment:
+      RAILS_ENV: "staging"
+      RAILS_LOG_TO_STDOUT: "true"
+    volumes:
+      - gems_musclegrow:/usr/local/bundle
+      - .:/app
+    ports:
+      - "80:3000"
+    command: bash -c "rm -f tmp/pids/server.pid; rails s -p 3000 -b '0.0.0.0'"
+
+  db:
+    image: postgres:15.2
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: mypass
+  
