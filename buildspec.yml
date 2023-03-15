@@ -6,10 +6,12 @@ phases:
       docker: 20
   pre_build:
     commands:
+      - echo Build Container...
+      - docker-compose build
       - echo Updating Gems...
-      - docker compose run --rm web bundle
+      - docker-compose run --rm web bundle
       - echo Migrating Test Database...
-      - docker compose run --rm web rails db:create db:migrate RAILS_ENV=test
+      - docker-compose run --rm web rails db:create db:migrate RAILS_ENV=test
   build:
     commands:
       - echo Nothing on build phase...
