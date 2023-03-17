@@ -7,7 +7,6 @@ phases:
   pre_build:
     commands:
       - echo Build Container...
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay&
       - docker-compose build
       - echo Updating Gems...
       - docker-compose run --rm web bundle
@@ -15,8 +14,5 @@ phases:
       - docker-compose run --rm web rails db:create db:migrate RAILS_ENV=test
   build:
     commands:
-      - echo Nothing on build phase...
-
-artifacts:
-  files:
-    - musclegrow-build.json
+      - echo Compile Assets...
+      - docker-compose run --rm web rails assets:precompile
