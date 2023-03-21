@@ -8,9 +8,7 @@ phases:
       docker: 20
   pre_build:
     commands:
-      - dockerhub_user=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.DOCKERHUB_USER')
-      - dockerhub_pass=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.DOCKERHUB_PASS')
-      - docker login --username $dockerhub_user --password $dockerhub_pass
+      - docker login --username $(printenv DOCKERHUB_USER) --password $(printenv DOCKERHUB_PASS)
       - echo Build Container...
       - docker-compose build web
       - echo Updating Gems...
