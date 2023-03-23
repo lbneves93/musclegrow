@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines home as root path route ("/")
   root "home#index"
+  
+  resources :exercises, only: %i[index]
 end
