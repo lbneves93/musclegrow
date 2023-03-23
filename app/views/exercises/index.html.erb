@@ -1,0 +1,9 @@
+<h1 class="exercises-title">GYM EXERCISES</h1>
+<div class="exercise-list">
+  <% @exercises.each do |exercise| %>
+    <div class="exercise-card">
+      <div class="exercise-name"><%= exercise.name %></div>
+      <div><%= image_tag("#{exercise.img_url}", { style: "width: 400px; height: 300px" })%></div>
+    </div>
+  <% end %>
+</div>

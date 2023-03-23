@@ -1,0 +1,29 @@
+.exercise-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  align-items: center;
+}
+
+.exercise-card {
+  margin-top: 2vh;
+  border-radius: 3vw;
+  padding: 0;
+}
+
+.exercise-name {
+  background-color: #ed832d;
+  color: whitesmoke;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 0.2em;
+  text-transform: capitalize;
+}
+
+.exercises-title {
+  margin-top: 5vh;
+}

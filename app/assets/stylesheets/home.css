@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1 {
+  align-self: center;
+  color: whitesmoke;
+  font-family: monospace, Times, serif;
+}
+
+h2 {
+  align-self: center;
+  color: whitesmoke;
+  font-family: Times, monospace, serif;
+}
+
+.header-box {
+  background-color: #ed832d;
+  margin: 0;
+  width: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-description {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
