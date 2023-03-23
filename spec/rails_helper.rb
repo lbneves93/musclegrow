@@ -60,4 +60,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # include Factory Bot gem to create fake data in tests.
+  config.include FactoryBot::Syntax::Methods
 end
