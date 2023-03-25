@@ -1,17 +1,18 @@
 .exercise-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-left: 5vw;
   margin-right: 5vw;
+  padding: 0.5vw;
   align-items: center;
 }
 
 .exercise-card {
   margin-top: 2vh;
   border-radius: 3vw;
-  padding: 0;
+  margin-right: 3vw;
 }
 
 .exercise-name {
@@ -22,8 +23,75 @@
   font-size: 1.2em;
   padding: 0.2em;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .exercises-title {
   margin-top: 5vh;
 }
+
+.exercise-category {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 1vw;
+  margin-bottom: 0.5vh;
+}
+
+.category-card {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  background-color: #66b3ff;
+  margin-right: 4vw;
+  height: 20.7vh;
+  width: 10vw;
+  border-radius: 1vw;
+}
+
+.category-name {
+  color: black;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 1.0em;
+  padding: 0.2em;
+  text-transform: uppercase;
+}
+
+.category-0 {
+  background-color: #b3d9ff;
+}
+
+.category-1 {
+  background-color: #cce6ff;
+}
+
+.category-2 {
+  background-color: #b3d9ff;
+}
+
+.category-3 {
+  background-color: #cce6ff;
+}
+
+.category-4 {
+  background-color: #b3d9ff;
+}
+
+.category-5 {
+  background-color: #cce6ff;
+}
+
+.category-6 {
+  background-color: #b3d9ff;
+}
+
+.category-7 {
+  background-color: #cce6ff;
+}
+
+

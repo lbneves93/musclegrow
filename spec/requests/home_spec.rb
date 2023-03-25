@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Exercises', type: :request do
-  describe 'LIST exercises' do
-    before { get exercises_path }
+RSpec.describe 'Home', type: :request do
+  describe 'LIST home' do
+    before { get root_path }
 
     context 'when has not exercises' do
       it { expect(response).to have_http_status(:success) }

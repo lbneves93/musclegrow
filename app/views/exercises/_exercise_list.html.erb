@@ -1,0 +1,16 @@
+<div class="exercise-list">
+  <% @exercises_categories.each_with_index do |category, index| %>
+    <div class='exercise-category category-<%="#{index}"%>'>
+      <div class='category-card'>
+        <span class="category-name"><%= category.name %></span>
+        <%= image_tag("#{category.img_url}", { style: "width: 9vw; height: 15vh" })%>
+      </div>
+      <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
+        <div class="exercise-card">
+          <div class="exercise-name"><%= exercise.name %></div>
+          <div><%= image_tag("#{exercise.img_url}", { style: "width: 15vw; height: 15vh" })%></div>
+        </div>
+      <% end %>    
+    </div>
+  <% end %>
+</div>
