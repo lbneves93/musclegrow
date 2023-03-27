@@ -26,19 +26,25 @@
   text-align: center;
 }
 
-.exercises-title {
-  margin-top: 5vh;
-}
-
 .exercise-category {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
-  flex-direction: row;
+  align-items: flex-start;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   border-radius: 1vw;
   margin-bottom: 0.5vh;
+}
+
+.category-title {
+  width: 100%;
+}
+
+.category-exercises {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 
 .category-card {
@@ -62,36 +68,12 @@
   text-transform: uppercase;
 }
 
-.category-0 {
-  background-color: #b3d9ff;
+.category-header-color {
+  background-color: #b3d9ff !important;
 }
 
-.category-1 {
-  background-color: #cce6ff;
-}
-
-.category-2 {
-  background-color: #b3d9ff;
-}
-
-.category-3 {
-  background-color: #cce6ff;
-}
-
-.category-4 {
-  background-color: #b3d9ff;
-}
-
-.category-5 {
-  background-color: #cce6ff;
-}
-
-.category-6 {
-  background-color: #b3d9ff;
-}
-
-.category-7 {
-  background-color: #cce6ff;
+.category-body-color {
+  background-color: #cce6ff !important;
 }
 
 
