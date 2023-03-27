@@ -703,3 +703,181 @@ Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1659)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mExercise Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "exercises"[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/exercises" for 127.0.0.1 at 2023-03-27 22:30:03 +0000
+Processing by ExercisesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering exercises/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (1.4ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 2.1ms | Allocations: 567)
+  Rendered exercises/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 984)
+  Rendered layout layouts/application.html.erb (Duration: 6400.2ms | Allocations: 139241)
+Completed 200 OK in 6407ms (Views: 6401.3ms | ActiveRecord: 1.4ms | Allocations: 142168)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/exercises" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by ExercisesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering exercises/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.3ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.7ms | Allocations: 107)
+  Rendered exercises/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 150)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1491)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1737)
+  [1m[36mExercise Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "exercises" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/exercises" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by ExercisesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering exercises/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.3ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.6ms | Allocations: 107)
+  Rendered exercises/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 150)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1484)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1727)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.775006"], ["updated_at", "2023-03-27 22:30:09.775006"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (1.2ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bench press"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.778503"], ["updated_at", "2023-03-27 22:30:09.778503"], ["exercise_category_id", "a3460ea8-df68-4519-ba6f-2aab80b2b460"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.781825"], ["updated_at", "2023-03-27 22:30:09.781825"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.4ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barbell bicep curls"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.784291"], ["updated_at", "2023-03-27 22:30:09.784291"], ["exercise_category_id", "79d82011-daa3-4648-a239-312de68a01d0"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Aerobic"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.786260"], ["updated_at", "2023-03-27 22:30:09.786260"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.4ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bench press"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.787931"], ["updated_at", "2023-03-27 22:30:09.787931"], ["exercise_category_id", "cfd98f0a-e861-43fa-9378-0e6942bb6a12"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/exercises" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by ExercisesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering exercises/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.2ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.5ms | Allocations: 107)
+  Rendered exercises/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 150)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1484)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1727)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Abs"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.795920"], ["updated_at", "2023-03-27 22:30:09.795920"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.3ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barbell bicep curls"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.797383"], ["updated_at", "2023-03-27 22:30:09.797383"], ["exercise_category_id", "4ef31512-2dc9-4de0-be9f-62e368366028"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Triceps"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.799404"], ["updated_at", "2023-03-27 22:30:09.799404"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.4ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bench press"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.801292"], ["updated_at", "2023-03-27 22:30:09.801292"], ["exercise_category_id", "e9f20365-a41e-4c07-89f6-08baa420263d"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Back"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.803570"], ["updated_at", "2023-03-27 22:30:09.803570"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.6ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bench press"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.805569"], ["updated_at", "2023-03-27 22:30:09.805569"], ["exercise_category_id", "b12d498a-ca09-4a05-8fe5-64ecae52c1d7"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mExercise Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "exercises"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.8ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 2.0ms | Allocations: 109)
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 277)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 1687)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.8ms | Allocations: 2296)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.2ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.5ms | Allocations: 107)
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1488)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 1731)
+  [1m[36mExercise Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "exercises" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.3ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.7ms | Allocations: 107)
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1488)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1731)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.838508"], ["updated_at", "2023-03-27 22:30:09.838508"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.5ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Squat"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.841378"], ["updated_at", "2023-03-27 22:30:09.841378"], ["exercise_category_id", "9cf93357-f20c-46e5-bbdf-03c95a832b93"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.844465"], ["updated_at", "2023-03-27 22:30:09.844465"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.4ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barbell bicep curls"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.847539"], ["updated_at", "2023-03-27 22:30:09.847539"], ["exercise_category_id", "0162ec8f-3c54-4949-b62b-ebc8d100b791"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.850073"], ["updated_at", "2023-03-27 22:30:09.850073"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.2ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bench press"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.851463"], ["updated_at", "2023-03-27 22:30:09.851463"], ["exercise_category_id", "78f6116f-0b18-4ddd-8657-2badaf0631f0"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2023-03-27 22:30:09 +0000
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.3ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  Rendered exercises/_exercise_list.html.erb (Duration: 0.7ms | Allocations: 107)
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1488)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1731)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Shoulder"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.860550"], ["updated_at", "2023-03-27 22:30:09.860550"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.3ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barbell bicep curls"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.862021"], ["updated_at", "2023-03-27 22:30:09.862021"], ["exercise_category_id", "615e3814-1f9d-4447-be81-d98a29f70b96"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Back"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.863492"], ["updated_at", "2023-03-27 22:30:09.863492"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.2ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barbell bicep curls"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.864774"], ["updated_at", "2023-03-27 22:30:09.864774"], ["exercise_category_id", "71c5794b-08e7-4b96-93ae-be7ca6afe186"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExerciseCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "exercise_categories" ("name", "img_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chest"], ["img_url", "www.muscle.com/chest.jpg"], ["created_at", "2023-03-27 22:30:09.866117"], ["updated_at", "2023-03-27 22:30:09.866117"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mExercise Create (0.2ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "img_url", "created_at", "updated_at", "exercise_category_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Squat"], ["img_url", "myimg.com/exercise.jpg"], ["created_at", "2023-03-27 22:30:09.867696"], ["updated_at", "2023-03-27 22:30:09.867696"], ["exercise_category_id", "a5199181-4206-4a68-b68c-9b642795c265"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mExercise Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "exercises"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
