@@ -5314,3 +5314,72 @@ Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.2
   
 ActionController::RoutingError (No route matches [GET] "/null"):
   
+Started GET "/exercises" for 172.19.0.1 at 2023-03-28 00:29:22 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ExercisesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering exercises/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.6ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  ↳ app/views/exercises/_exercise_list.html.erb:2:in `each_with_index'
+  [1m[36mExercise Load (0.4ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "c7550e5a-4029-442d-99be-2d271b51404f"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "424bfba6-5655-485f-9a24-dd6ba37893fa"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.4ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "867f6e55-0d2f-4bad-b4b2-07292d0b5c7c"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (1.0ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "47211c96-e8a3-41ad-8d67-5500dc664d50"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.4ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "3d0d8d8d-ac90-44b6-88c2-6eeddfb61371"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "e13a9779-cde1-4a87-95f0-fd93e43f0d7d"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "11ba9da0-ea76-41d5-8fc4-88dbf77c9646"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "11e0320a-0e87-4dd4-923a-4fb6b81e2bc5"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  Rendered exercises/_exercise_list.html.erb (Duration: 36.3ms | Allocations: 14351)
+  Rendered exercises/index.html.erb within layouts/application (Duration: 37.6ms | Allocations: 14934)
+  Rendered layout layouts/application.html.erb (Duration: 4054.5ms | Allocations: 158659)
+Completed 200 OK in 4075ms (Views: 4051.4ms | ActiveRecord: 9.5ms | Allocations: 166592)
+
+
+Started GET "/null" for 172.19.0.1 at 2023-03-28 00:29:27 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/null"):
+  
+Started GET "/" for 172.19.0.1 at 2023-03-28 00:29:30 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mExerciseCategory Load (0.2ms)[0m  [1m[34mSELECT "exercise_categories".* FROM "exercise_categories"[0m
+  ↳ app/views/exercises/_exercise_list.html.erb:2:in `each_with_index'
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "c7550e5a-4029-442d-99be-2d271b51404f"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "424bfba6-5655-485f-9a24-dd6ba37893fa"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "867f6e55-0d2f-4bad-b4b2-07292d0b5c7c"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "47211c96-e8a3-41ad-8d67-5500dc664d50"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "3d0d8d8d-ac90-44b6-88c2-6eeddfb61371"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.3ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "e13a9779-cde1-4a87-95f0-fd93e43f0d7d"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "11ba9da0-ea76-41d5-8fc4-88dbf77c9646"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."exercise_category_id" = $1[0m  [["exercise_category_id", "11e0320a-0e87-4dd4-923a-4fb6b81e2bc5"]]
+  ↳ app/views/exercises/_exercise_list.html.erb:11
+  Rendered exercises/_exercise_list.html.erb (Duration: 18.1ms | Allocations: 6495)
+  Rendered home/index.html.erb within layouts/application (Duration: 18.5ms | Allocations: 6677)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 12314)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 2.2ms | Allocations: 12972)
+
+
+Started GET "/null" for 172.19.0.1 at 2023-03-28 00:29:30 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/null"):
+  
