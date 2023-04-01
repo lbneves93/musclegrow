@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root "home#index"
   
   resources :exercises, only: %i[index]
+  resources :training_plans, only: %i[update]
 end

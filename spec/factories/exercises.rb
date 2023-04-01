@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :exercise do
     association :exercise_category 
     name { ['Bench press', 'Squat', 'Barbell bicep curls'].sample }
-    img_url { 'myimg.com/exercise.jpg' }
+    img_url { 'https://myimg.com/exercise.jpg' }
   end
 end

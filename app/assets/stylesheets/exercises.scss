@@ -27,23 +27,19 @@
 }
 
 .exercise-category {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
   border-radius: 1vw;
   margin-bottom: 0.5vh;
+  padding-bottom: 1vh;
 }
 
 .category-title {
   width: 100%;
 }
 
-.category-exercises {
+.exercises-in-category {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
   flex-direction: row;
 }
 
@@ -53,7 +49,6 @@
   flex-direction: column;
   align-items: center;
   background-color: #66b3ff;
-  margin-right: 4vw;
   height: 20.7vh;
   width: 10vw;
   border-radius: 1vw;
@@ -66,14 +61,14 @@
   font-size: 1.0em;
   padding: 0.2em;
   text-transform: uppercase;
-}
-
-.category-header-color {
-  background-color: #b3d9ff !important;
+  text-align: center;
 }
 
 .category-body-color {
   background-color: #cce6ff !important;
 }
 
+.exercise-list-modal-title {
+  color: black;
+}
 

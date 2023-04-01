@@ -1,0 +1,30 @@
+.training-plan-header {
+  background-color: #b3d9ff;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.training-plan-label {
+  margin-right: 1vw;
+  color: black;
+  font-family: Times, monospace, serif;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.without-exercises {
+  color: gray;
+  font-family: serif, Times, monospace;
+  font-weight: bold;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.training_schedules-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}

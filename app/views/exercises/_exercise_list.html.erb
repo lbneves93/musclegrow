@@ -1,21 +1,28 @@
-<div class="accordion accordion-flush exercise-list" id="exercise-list">
+<div class="container-fluid">
   <% @exercises_categories.each_with_index do |category, index| %>
-    <div class="accordion-item exercise-category category-body-color">
-      <h2 class="accordion-header category-title">
-        <button class="accordion-button category-button category-header-color" type="button" data-bs-toggle="collapse" data-bs-target='#collapse<%="#{index}"%>' aria-expanded="true" aria-controls='#collapse<%="#{index}"%>'>
-          <span class="category-name"><%= category.name %></span>
-        </button>
-      </h2>
-      <div id='collapse<%="#{index}"%>' class="accordion-collapse collapse">
-        <div class="accordion-body category-exercises">
+      <div class="row exercise-category category-body-color">
+        <span class="col-md-12 category-name"><%= category.name %></span>
+        <div class="col-md-12 exercises-in-category">
           <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
             <div class="exercise-card">
-              <div class="exercise-name"><%= exercise.name %></div>
+              <div class="exercise-name">
+                <%= check_box_tag(
+                  "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
+                  'yes', 
+                  false,
+                  name: 'exercise-checkbox',
+                  data: { action: 'click->exercises#changeCheckExercise' }) %>
+                <%= content_tag(
+                  :span,
+                  id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",
+                  data: { url: "#{exercise.img_url}" }) do %>
+                  <%= exercise.name %>
+                <% end %>
+              </div>
               <div><%= image_tag("#{exercise.img_url}", { style: "width: 15vw; height: 15vh" })%></div>
             </div>
           <% end %>
         </div>
       </div>
-    </div>
   <% end %>
 </div>

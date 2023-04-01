@@ -23,5 +23,15 @@ RSpec.describe Exercise, type: :model do
         expect(exercise.valid?).to be_falsey
       end
     end
+
+    context 'when exercise name already exists' do
+      before { create(:exercise, name: 'Bench Press') }
+
+      let(:exercise) { build(:exercise, name: 'bench Press') }
+
+      it 'returns invalid exercise' do
+        expect(exercise.valid?).to be_falsey
+      end
+    end
   end
 end

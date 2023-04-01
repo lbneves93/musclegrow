@@ -1,0 +1,42 @@
+<%= form_with model: @training_plan do |form| %>
+  <div class="training-plan-header">
+    <label class="training-plan-label">Training Plan Description</label>
+    <%= form.text_field :description %>
+  </div>  
+  <ul class="list-group" data-controller="training-plans">
+    <% (0..6).each do |day|%>
+      <li class="list-group-item">
+        <span class="col-md-12"><%= "Dia: #{day}" %></span>
+        <div class="mt-4 training_schedules-item" id=<%= "block-exercises-#{day}" %>>
+          <%= fields_for :training_schedule do |schedule_subform| %>
+            <%= schedule_subform.hidden_field :week_day, value: day %>
+            <%= schedule_subform.hidden_field :exercise_names, id: "exercises-list-names-#{day}", value: @schedule_exercises[day]&.to_s.presence || [] %>
+          <% end %>
+          <% if @training_plan.training_schedules.exists?(week_day: day) %>
+            <% @schedule_exercises[day].each do |name| %>
+              <div class="exercise-card">
+                <%= content_tag(
+                  :div, 
+                  class: ["exercise-name"],
+                  data: { day: "#{day}", name: "#{name}", url: "#{Exercise.find_by(name: name).img_url}" }) do %>
+                  <%= name %>
+                <% end %>
+                <div><%= image_tag("#{Exercise.find_by(name: name).img_url}", { style: "width: 15vw; height: 15vh" })%></div>
+              </div>
+            <% end %>
+          <% else %>
+            <span id=<%= "no-exercises-#{day}" %> class="col-md-12 mb-4 without-exercises">Not exercises today.</span>
+          <% end %>
+        </div>
+        <%= button_tag(
+          type: 'button', 
+          class: "btn btn-primary col-md-1",
+          id: "#{day}",
+          data: { action: "click->training-plans#setCurrentWeekDay", bs_toggle: "modal", bs_target: "#exercisesModal" }) do %>
+          Add Exercises
+        <% end %>
+      </li>  
+    <% end %>
+  </ul>    
+  <%= form.submit %>
+<% end %>

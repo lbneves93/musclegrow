@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_143323) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_005301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -31,10 +31,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_143323) do
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
   end
 
+  create_table "training_plans", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "training_plan_id"
+    t.uuid "exercise_id"
+    t.integer "week_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_training_schedules_on_exercise_id"
+    t.index ["training_plan_id"], name: "index_training_schedules_on_training_plan_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "exercises", "exercise_categories"
+  add_foreign_key "training_schedules", "exercises"
+  add_foreign_key "training_schedules", "training_plans"
 end
