@@ -13,7 +13,13 @@ RSpec.describe 'Exercises', type: :request do
     end
 
     context 'when has exercises' do
-      before { create_list(:exercise, 3) }
+      let(:exercise_category) { create(:exercise_category, name: 'Leg') }
+
+      before do 
+        create(:exercise, name: 'Squat', exercise_category: exercise_category)
+        create(:exercise, name: 'Leg Press', exercise_category: exercise_category)
+        create(:exercise, name: 'Leg Extension', exercise_category: exercise_category)
+      end
 
       it { expect(response).to have_http_status(:success) }
 

@@ -2,7 +2,7 @@
   <% @exercises_categories.each_with_index do |category, index| %>
       <div class="row exercise-category category-body-color">
         <span class="col-md-12 category-name"><%= category.name %></span>
-        <div class="col-md-12 exercises-in-category">
+        <div class="exercises-in-category">
           <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
             <div class="exercise-card">
               <div class="exercise-name">
@@ -11,6 +11,7 @@
                   'yes', 
                   false,
                   name: 'exercise-checkbox',
+                  class: 'form-check-input',
                   data: { action: 'click->exercises#changeCheckExercise' }) %>
                 <%= content_tag(
                   :span,
@@ -19,7 +20,7 @@
                   <%= exercise.name %>
                 <% end %>
               </div>
-              <div><%= image_tag("#{exercise.img_url}", { style: "width: 15vw; height: 15vh" })%></div>
+              <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>
             </div>
           <% end %>
         </div>

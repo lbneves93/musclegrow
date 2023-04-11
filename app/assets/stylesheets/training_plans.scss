@@ -1,3 +1,9 @@
+.form-training-plan {
+  width: 85%;
+  align-self: center;
+  margin-top: 2vh;
+}
+
 .training-plan-header {
   background-color: #b3d9ff;
   padding: 1%;
@@ -24,7 +30,44 @@
 
 .training_schedules-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  min-height: 20vh;
+}
+
+.weekday-name {
+  color: black;
+  font-family: serif, Times, monospace;
+  font-weight: bold;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.itens-weekday {
+  display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.add-exercise-button {
+  margin-right: 2vw;
+  border-radius: 60%;
+}
+
+.weekday-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.training-plan-submit {
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  align-self: center;
+  background-color: #ed832d;
+  color: whitesmoke;
+  font-weight: bold;
 }

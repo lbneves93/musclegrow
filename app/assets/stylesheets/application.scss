@@ -1,4 +1,9 @@
 @import "bootstrap";
 @import "exercises";
 @import "home";
-@import "training_plans"
+@import "training_plans";
+
+
+.btn-secondary {
+  font-weight: bold !important;
+}

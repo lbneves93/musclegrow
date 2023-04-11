@@ -16,14 +16,17 @@
 }
 
 .exercise-name {
-  background-color: #ed832d;
+  background-color: #0d6efd;
   color: whitesmoke;
   font-family: Georgia, serif;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.0em;
   padding: 0.2em;
   text-transform: capitalize;
   text-align: center;
+  max-width: 200px;
+  word-wrap: break-word;
+  height: 50px;
 }
 
 .exercise-category {
@@ -38,9 +41,10 @@
 
 .exercises-in-category {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .category-card {
@@ -72,3 +76,17 @@
   color: black;
 }
 
+.form-check-input:checked {
+  background-color: #ed832d !important;
+  border-color: #ed832d !important;
+}
+
+.modal-save-button {
+  background-color: #ed832d;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.modal-screen {
+  max-width: 1200px !important;
+}

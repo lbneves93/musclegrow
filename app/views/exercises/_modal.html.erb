@@ -1,5 +1,5 @@
 <div class="modal fade" id="exercisesModal" data-controller="exercises" data-action="focus->exercises#loadExecisesChecked" role="dialog" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exercisesModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-screen">
     <div class="modal-content modal-exercise-list-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 exercise-list-modal-title" id="exercisesModalLabel">Exercises List</h1>
@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button data-bs-dismiss="modal" data-action="click->exercises#save" type="button" class="btn btn-primary">Save</button>
+        <button data-bs-dismiss="modal" data-action="click->exercises#save" type="button" class="btn modal-save-button">Save</button>
       </div>
     </div>
   </div>
