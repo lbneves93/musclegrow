@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Exercises', type: :request do
-  describe 'LIST exercises' do
+  describe 'LIST exercises' do    
     before { get exercises_path }
 
     context 'when has not exercises' do
