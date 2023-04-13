@@ -1,9 +1,34 @@
 @import "bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 @import "exercises";
 @import "home";
 @import "training_plans";
+@import "signin";
 
+.btn-main {
+  background-color: #ed832d;
+  border-color: #ed832d;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.btn-main:hover {
+  background-color: #f19e5b;
+  border-color: #f19e5b;
+  color: whitesmoke;
+  font-weight: bold;
+}
 
 .btn-secondary {
   font-weight: bold !important;
+}
+
+.btn-sign-out {
+  font-size: 2.0em;
+  color: whitesmoke;
+}
+
+.btn-list-menu {
+  font-size: 2.0em;
+  color: whitesmoke;
 }

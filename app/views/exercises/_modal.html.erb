@@ -2,15 +2,15 @@
   <div class="modal-dialog modal-screen">
     <div class="modal-content modal-exercise-list-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 exercise-list-modal-title" id="exercisesModalLabel">Exercises List</h1>
+        <h1 class="modal-title fs-5 exercise-list-modal-title" id="exercisesModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= render "exercises/exercise_list" %>
+        <%= render "exercises/exercise_list", with_checkbox: true %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button data-bs-dismiss="modal" data-action="click->exercises#save" type="button" class="btn modal-save-button">Save</button>
+        <button data-bs-dismiss="modal" data-action="click->exercises#save" type="button" class="btn btn-main">Save</button>
       </div>
     </div>
   </div>

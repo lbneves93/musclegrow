@@ -1,0 +1,30 @@
+.signin-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  margin-top: 20vh;
+  border-color: #0d6efd;
+  border-radius: 2%;
+  border-width: 0.1em;
+  border-style: solid;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2vh;
+  width: 300px;
+}
+
+.form-group {
+  margin-bottom: 3vh;
+}
+
+.form-control {
+  margin-top: 1vh !important;
+}
+
+.login-title {
+  background-color: #0d6efd;
+  width: 300px;
+  color: whitesmoke;
+}

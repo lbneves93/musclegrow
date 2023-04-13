@@ -6,13 +6,15 @@
           <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
             <div class="exercise-card">
               <div class="exercise-name">
-                <%= check_box_tag(
-                  "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
-                  'yes', 
-                  false,
-                  name: 'exercise-checkbox',
-                  class: 'form-check-input',
-                  data: { action: 'click->exercises#changeCheckExercise' }) %>
+                <% if defined?(with_checkbox) && with_checkbox %>
+                  <%= check_box_tag(
+                    "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
+                    'yes', 
+                    false,
+                    name: 'exercise-checkbox',
+                    class: 'form-check-input',
+                    data: { action: 'click->exercises#changeCheckExercise' }) %>
+                <% end %>    
                 <%= content_tag(
                   :span,
                   id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",

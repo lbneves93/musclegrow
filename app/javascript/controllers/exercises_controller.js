@@ -6,11 +6,21 @@ export default class extends Controller {
     this.exercisesOfWeek = [];
     this.exercisesOfDay = [];
     this.currentDay = 0;
+    this.weekdayNames = {
+      0: 'Sunday',
+      1: 'Monday',
+      2: 'Thusday',
+      3: 'Wednesday',
+      4: 'Thursday',
+      5: 'Friday',
+      6: 'Saturday'
+    }
   }
 
   loadExecisesChecked() {
     this.cleanAllChecks();
     this.currentDay = parseInt(localStorage.getItem('weekday'));
+    this.setWeekDayTitle();
     this.exercisesOfWeek = JSON.parse(localStorage.getItem('exercisesOfWeek'));
     this.exercisesOfDay = this.exercisesOfWeek[this.currentDay];
     this.exercisesOfDay.forEach((exercise) => {
@@ -63,5 +73,9 @@ export default class extends Controller {
 
   cleanAllChecks() {
     document.querySelectorAll('input[name=exercise-checkbox]:checked').forEach(el => el.checked = false);
+  }
+
+  setWeekDayTitle() {
+    document.getElementById('exercisesModalLabel').innerHTML = `Exercises for ${this.weekdayNames[this.currentDay]}`;
   }
 }
