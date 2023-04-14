@@ -1,9 +1,13 @@
 RSpec.configure do |config|
   config.before type: :request do
-    sign_in user
+    sign_in athlete_user
   end
 end
 
-def user
-  @user ||= create(:user)
+def admin_user
+  @admin_user ||= create(:user)
+end
+
+def athlete_user
+  @athlete_user ||= create(:user, :athlete)
 end

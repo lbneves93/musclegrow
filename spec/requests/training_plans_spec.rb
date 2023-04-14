@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Training Plans', type: :request do
   describe 'UPDATE training_plan' do
-    let(:training_plan) { create(:training_plan) }
+    let(:training_plan) { create(:training_plan, user: athlete_user) }
     
     let(:first_category) { create(:exercise_category, name: 'Biceps') }
     let(:first_exercise) { create(:exercise, name: 'Biceps curls', exercise_category: first_category) }
@@ -91,6 +91,15 @@ RSpec.describe 'Training Plans', type: :request do
 
       it 'removes exercise on sunday' do
         expect(TrainingSchedule.find_by(week_day: 0)).to be_nil
+      end
+    end
+
+    context 'when trying to update traning_plan from other user' do
+      let(:training_plan) { create(:training_plan) }
+      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name].to_s}] }
+      
+      it 'raises CanCan::AccessDenied exception' do
+        expect{ put (training_plan_path(params)) }.to raise_error(CanCan::AccessDenied)
       end
     end
   end

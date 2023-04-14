@@ -2,6 +2,8 @@ class TrainingPlansController < ApplicationController
   before_action :set_training_plan, only: [:update]
 
   def update
+    authorize! :update, @training_plan
+
     TrainingSchedule.transaction do
       @training_plan.update(description: update_params[:description])
       @training_plan.training_schedules.destroy_all

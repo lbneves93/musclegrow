@@ -43,11 +43,11 @@ RSpec.describe 'Home', type: :request do
 
     context 'when has many training plans' do
       let(:first_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: user)
+        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: athlete_user)
       end
 
       let(:second_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest', exercise_name: 'Bench Press', user: user)
+        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest', exercise_name: 'Bench Press', user: athlete_user)
       end
       
       before do
@@ -65,7 +65,7 @@ RSpec.describe 'Home', type: :request do
 
     context 'when has training plans from many users' do
       let(:first_user_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: user)
+        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: athlete_user)
       end
 
       let(:second_user_training_plan) do 
