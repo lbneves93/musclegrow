@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :training_plan do
     description { ['Easy Training', 'Intermediate Training', 'Advanced Training'].sample }
+    association :user
 
     trait :with_schedule do
       transient do

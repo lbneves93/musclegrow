@@ -27,7 +27,7 @@ RSpec.describe 'Training Plans', type: :request do
       
       it { expect(response).to have_http_status(:found) }
 
-      it 'updates traning_plan creating first training_schedule' do
+      it 'updates training_plan creating first training_schedule' do
         expect(training_plan.training_schedules.count).to eq(1)
       end
     end

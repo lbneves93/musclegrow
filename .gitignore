@@ -56,7 +56,7 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 /public/assets
-*.log
+/log/
 
 /config/master.key
 *.pem
