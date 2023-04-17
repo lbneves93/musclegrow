@@ -18,7 +18,7 @@ class TrainingPlansController < ApplicationController
       end
     end
 
-    redirect_to root_path
+    redirect_to root_path, flash: { message: 'Training plan updated with success!', type: :success }  
   end
 
   private

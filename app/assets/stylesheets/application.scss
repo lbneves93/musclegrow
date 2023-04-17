@@ -32,3 +32,40 @@
   font-size: 2.0em;
   color: whitesmoke;
 }
+
+.flash-success {
+  background-color: #008000;
+}
+
+.flash-error {
+  background-color: #b30000;
+}
+
+.flash-success, .flash-error {
+  width: 300px;
+  height: 80px;
+  color: whitesmoke;
+  font-size: 1.0em;
+  border-radius: 1%;
+  padding: 15px;
+  text-align: center;
+  opacity: 0.7;
+  position: fixed;
+  display: none;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  top: 60px;
+  right: 5px;
+
+  p {
+    display: flex;
+    vertical-align: middle;
+    margin: 0px;
+  }
+}
+
+.icon-success, .icon-error {
+  font-size: 2.0em;
+}
+

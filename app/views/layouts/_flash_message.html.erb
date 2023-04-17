@@ -1,0 +1,21 @@
+<% if defined?(flash) && flash.present? %>
+  <%= content_tag(
+    :div,
+    id: "flash", 
+    class: "flash-#{flash[:type]}",
+    data: { controller: "main", main_target: "flash" }) do %>
+      <%= tag.i class: icon_class(flash[:type]) %>
+      <p><%= flash[:message] %></p>
+  <% end %>
+<% end %>
+
+<% if defined?(alert) && alert.present? %>
+  <%= content_tag(
+    :div,
+    id: "flash", 
+    class: "flash-error",
+    data: { controller: "main", main_target: "flash" }) do %>
+      <%= tag.i class: icon_class('error') %>
+      <p><%= alert.capitalize %></p>
+  <% end %>
+<% end %>
