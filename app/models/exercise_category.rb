@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExerciseCategory < ApplicationRecord
   has_many :exercises, dependent: :destroy
 

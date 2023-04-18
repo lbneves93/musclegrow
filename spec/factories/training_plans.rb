@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :training_plan do
     description { ['Easy Training', 'Intermediate Training', 'Advanced Training'].sample }
@@ -12,7 +14,7 @@ FactoryBot.define do
       after(:create) do |training_plan, evaluator|
         category = create(:exercise_category, name: evaluator.category_name)
         exercise = create(:exercise, name: evaluator.exercise_name, exercise_category: category)
-        create(:training_schedule, training_plan: training_plan, exercise: exercise)
+        create(:training_schedule, training_plan:, exercise:)
       end
     end
   end

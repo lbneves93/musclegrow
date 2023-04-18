@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Training Plans', type: :request do
   describe 'UPDATE training_plan' do
     let(:training_plan) { create(:training_plan, user: athlete_user) }
-    
+
     let(:first_category) { create(:exercise_category, name: 'Biceps') }
     let(:first_exercise) { create(:exercise, name: 'Biceps curls', exercise_category: first_category) }
-    
+
     let(:second_category) { create(:exercise_category, name: 'Leg') }
     let(:second_exercise) { create(:exercise, name: 'Leg press', exercise_category: second_category) }
 
@@ -21,10 +23,10 @@ RSpec.describe 'Training Plans', type: :request do
     end
 
     context 'when has not training schedules and create first one' do
-      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name].to_s}] }
-      
-      before { put (training_plan_path(params)) }
-      
+      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name].to_s }] }
+
+      before { put(training_plan_path(params)) }
+
       it { expect(response).to have_http_status(:found) }
 
       it 'updates training_plan creating first training_schedule' do
@@ -33,11 +35,13 @@ RSpec.describe 'Training Plans', type: :request do
     end
 
     context 'when has training schedule for sunday and add more exercises' do
-      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name, second_exercise.name].to_s}] }
+      let(:training_schedules_param) do
+        [{ week_day: 0, exercise_names: [first_exercise.name, second_exercise.name].to_s }]
+      end
 
       before do
-        create(:training_schedule, training_plan: training_plan, week_day: 0, exercise: first_exercise)
-        put (training_plan_path(params))
+        create(:training_schedule, training_plan:, week_day: 0, exercise: first_exercise)
+        put(training_plan_path(params))
       end
 
       it { expect(response).to have_http_status(:found) }
@@ -52,7 +56,7 @@ RSpec.describe 'Training Plans', type: :request do
     end
 
     context 'when has training schedule for sunday and add schedule for monday too' do
-      let(:training_schedules_param) do 
+      let(:training_schedules_param) do
         [
           { week_day: 0, exercise_names: [first_exercise.name].to_s },
           { week_day: 1, exercise_names: [second_exercise.name].to_s }
@@ -60,8 +64,8 @@ RSpec.describe 'Training Plans', type: :request do
       end
 
       before do
-        create(:training_schedule, training_plan: training_plan, week_day: 0, exercise: first_exercise)
-        put (training_plan_path(params))
+        create(:training_schedule, training_plan:, week_day: 0, exercise: first_exercise)
+        put(training_plan_path(params))
       end
 
       it { expect(response).to have_http_status(:found) }
@@ -78,9 +82,9 @@ RSpec.describe 'Training Plans', type: :request do
     context 'when has training schedule for sunday and remove all exercises for this day' do
       let(:training_schedules_param) { [{ week_day: 1, exercise_names: [second_exercise.name].to_s }] }
 
-      before do 
-        create(:training_schedule, training_plan: training_plan, week_day: 0, exercise: first_exercise)
-        put (training_plan_path(params))
+      before do
+        create(:training_schedule, training_plan:, week_day: 0, exercise: first_exercise)
+        put(training_plan_path(params))
       end
 
       it { expect(response).to have_http_status(:found) }
@@ -96,10 +100,10 @@ RSpec.describe 'Training Plans', type: :request do
 
     context 'when trying to update traning_plan from other user' do
       let(:training_plan) { create(:training_plan) }
-      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name].to_s}] }
-      
+      let(:training_schedules_param) { [{ week_day: 0, exercise_names: [first_exercise.name].to_s }] }
+
       it 'raises CanCan::AccessDenied exception' do
-        expect{ put (training_plan_path(params)) }.to raise_error(CanCan::AccessDenied)
+        expect { put(training_plan_path(params)) }.to raise_error(CanCan::AccessDenied)
       end
     end
   end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Exercises', type: :request do
-  describe 'LIST exercises' do    
+  describe 'LIST exercises' do
     before { get exercises_path }
 
     context 'when has not exercises' do
@@ -15,10 +17,10 @@ RSpec.describe 'Exercises', type: :request do
     context 'when has exercises' do
       let(:exercise_category) { create(:exercise_category, name: 'Leg') }
 
-      before do 
-        create(:exercise, name: 'Squat', exercise_category: exercise_category)
-        create(:exercise, name: 'Leg Press', exercise_category: exercise_category)
-        create(:exercise, name: 'Leg Extension', exercise_category: exercise_category)
+      before do
+        create(:exercise, name: 'Squat', exercise_category:)
+        create(:exercise, name: 'Leg Press', exercise_category:)
+        create(:exercise, name: 'Leg Extension', exercise_category:)
       end
 
       it { expect(response).to have_http_status(:success) }

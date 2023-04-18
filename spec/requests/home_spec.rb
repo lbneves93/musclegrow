@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Home', type: :request do
@@ -42,14 +44,16 @@ RSpec.describe 'Home', type: :request do
     end
 
     context 'when has many training plans' do
-      let(:first_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: athlete_user)
+      let(:first_training_plan) do
+        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat',
+                                               user: athlete_user)
       end
 
-      let(:second_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest', exercise_name: 'Bench Press', user: athlete_user)
+      let(:second_training_plan) do
+        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest',
+                                               exercise_name: 'Bench Press', user: athlete_user)
       end
-      
+
       before do
         first_training_plan
         second_training_plan
@@ -64,14 +68,16 @@ RSpec.describe 'Home', type: :request do
     end
 
     context 'when has training plans from many users' do
-      let(:first_user_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat', user: athlete_user)
+      let(:first_user_training_plan) do
+        create(:training_plan, :with_schedule, description: 'first', category_name: 'Leg', exercise_name: 'Squat',
+                                               user: athlete_user)
       end
 
-      let(:second_user_training_plan) do 
-        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest', exercise_name: 'Bench Press')
+      let(:second_user_training_plan) do
+        create(:training_plan, :with_schedule, description: 'second', category_name: 'Chest',
+                                               exercise_name: 'Bench Press')
       end
-      
+
       before do
         first_user_training_plan
         second_user_training_plan
