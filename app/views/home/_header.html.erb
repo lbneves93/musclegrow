@@ -1,10 +1,31 @@
 <div class="header-box">
   <% if current_user.present? %>
-    <i class="bi bi-list btn-list-menu"></i>
+      <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <i class="bi bi-list btn-list-menu"></i>
+      </a>
+   
+    <div class="collapse menu-content" id="collapseExample">
+      <div class="card card-body menu-content-body">
+        <ul class="menu-sandwich">
+          <li class="menu-item">
+            <a class="dropdown-item" href="/">
+              <i class="bi bi-house"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a class="dropdown-item" href="/exercises">
+              <i class="bi bi-bicycle"></i>
+              <span>Exercises</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   <% else %>
     <div></div>  
   <% end %>
-  <h1>Muscle Grow</h1>
+  <a class="app-title" href="/"><h1>Muscle Grow</h1></a>
   <% if current_user.present? %>
     <%= link_to('<i class="bi bi-box-arrow-right btn-sign-out"></i>'.html_safe, destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure do you want sign out?'}) %>
   <% else %>
