@@ -17,5 +17,6 @@ class Ability
 
   def athlete_access(user)
     can :manage, TrainingPlan, user: { id: user.id }
+    can :read, Exercise
   end
 end

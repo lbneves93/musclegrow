@@ -1,30 +1,36 @@
-<div class="container-fluid">
+<div class="accordion container-fluid mt-4" id="accordionExercises">
   <% @exercises_categories.each_with_index do |category, index| %>
-      <div class="row exercise-category category-body-color">
-        <span class="col-md-12 category-name"><%= category.name %></span>
-        <div class="exercises-in-category">
-          <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
-            <div class="exercise-card">
-              <div class="exercise-name">
-                <% if defined?(with_checkbox) && with_checkbox %>
-                  <%= check_box_tag(
-                    "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
-                    'yes', 
-                    false,
-                    name: 'exercise-checkbox',
-                    class: 'form-check-input',
-                    data: { action: 'click->exercises#changeCheckExercise' }) %>
-                <% end %>    
-                <%= content_tag(
-                  :span,
-                  id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",
-                  data: { url: "#{exercise.img_url}" }) do %>
-                  <%= exercise.name %>
-                <% end %>
+      <div class="exercise-category accordion-item">
+        <h2 class="accordion-header exercise-category-header" id="heading-<%= index %>">
+          <button class="accordion-button exercise-category-header" type="button" data-bs-toggle="collapse" data-bs-target="#category-<%= index %>" aria-expanded="true" aria-controls="category-<%= index %>">
+            <%= category.name.upcase %>
+          </button>
+        </h2>
+        <div id="category-<%= index %>" class="accordion-collapse collapse <%= index.zero? ? 'show': '' %>" aria-labelledby="heading-<%= index %>" data-bs-parent="#accordionExercises">
+          <div class="exercises-in-category accordion-body">
+            <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
+              <div class="exercise-card">
+                <div class="exercise-name">
+                  <% if defined?(with_checkbox) && with_checkbox %>
+                    <%= check_box_tag(
+                      "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
+                      'yes', 
+                      false,
+                      name: 'exercise-checkbox',
+                      class: 'form-check-input',
+                      data: { action: 'click->exercises#changeCheckExercise' }) %>
+                  <% end %>    
+                  <%= content_tag(
+                    :span,
+                    id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",
+                    data: { url: "#{exercise.img_url}" }) do %>
+                    <%= exercise.name %>
+                  <% end %>
+                </div>
+                <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>
               </div>
-              <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>
-            </div>
-          <% end %>
+            <% end %>
+          </div> 
         </div>
       </div>
   <% end %>
