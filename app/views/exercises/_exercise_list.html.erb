@@ -27,9 +27,14 @@
                     <%= exercise.name %>
                   <% end %>
                   <% if can? :manage, Exercise %>
-                    <%= link_to edit_exercise_path(exercise), class: 'exercise-edit-link' do %>
-                      <i class="bi bi-pencil-square"></i>
-                    <% end %>
+                    <div class="exercise-actions">
+                      <%= link_to edit_exercise_path(exercise) do %>
+                        <i class="bi bi-pencil-square"></i>
+                      <% end %>
+                      <%= link_to exercise_path(exercise), data: { turbo_method: :delete, turbo_confirm: 'Are you sure do you want delete exercise?' } do %>
+                        <i class="bi bi-trash-fill"></i>
+                      <% end %>
+                    </div>  
                   <% end %>
                 </div>
                 <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>

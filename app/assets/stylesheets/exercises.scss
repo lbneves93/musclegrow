@@ -19,12 +19,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: #0d6efd;
   color: whitesmoke;
   font-family: Georgia, serif;
   font-weight: bold;
   font-size: 1.0em;
-  padding: 0.7em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   text-transform: capitalize;
   text-align: center;
   max-width: 200px;
@@ -161,10 +163,14 @@
   border-bottom: 0.1em solid #ed832d;
 }
 
-.exercise-edit-link {
-  color: whitesmoke !important;
+.exercise-actions {
+  a {
+    color: whitesmoke;
+    text-decoration: none;
+  }
+  
   i {
-    color: whitesmoke !important;
-    font-size: 1.2em;
+    color: whitesmoke;
+    font-size: 1.0em;
   }
 }

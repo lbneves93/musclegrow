@@ -185,4 +185,35 @@ RSpec.describe 'Exercises', type: :request do
       end
     end
   end
+
+  describe 'DELETE exercise' do
+    subject(:delete_exercise) { delete exercise_path(params) }
+
+    before { sign_in admin_user }
+
+    let!(:exercise) { create(:exercise) }
+    let(:params) { { id: exercise_id } }
+
+    context 'with valid params' do
+      let(:exercise_id) { exercise.id }
+
+      it 'returns http status 302' do
+        delete_exercise
+        expect(response).to have_http_status(:redirect)
+      end
+
+      it 'deletes exercise with success' do
+        expect { delete_exercise }.to change(Exercise, :count).from(1).to(0)
+      end
+    end
+
+    context 'with invalid exercise id' do
+      let(:exercise_id) { FFaker::Guid.guid }
+
+      it 'returns http status 404' do
+        delete_exercise
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end

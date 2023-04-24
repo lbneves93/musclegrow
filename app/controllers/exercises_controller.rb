@@ -2,7 +2,7 @@
 
 class ExercisesController < ApplicationController
   before_action :load_exercise_categories
-  before_action :fetch_exercise, only: %i[edit update]
+  before_action :fetch_exercise, only: %i[edit update destroy]
   load_and_authorize_resource
 
   def index
@@ -40,6 +40,11 @@ class ExercisesController < ApplicationController
 
   def edit; end
 
+  def destroy
+    success_msg = 'Exercise deleted with success!'
+    return redirect_to exercises_path, flash: { message: success_msg, type: :success } if @exercise.destroy
+  end
+
   private
 
   def exercise_params
@@ -52,5 +57,10 @@ class ExercisesController < ApplicationController
 
   def fetch_exercise
     @exercise = Exercise.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    if @exercise.nil?
+      redirect_to exercises_path, status: :not_found,
+                                  flash: { message: 'Exercise not founded!', type: :error }
+    end
   end
 end
