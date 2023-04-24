@@ -16,12 +16,15 @@
 }
 
 .exercise-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #0d6efd;
   color: whitesmoke;
   font-family: Georgia, serif;
   font-weight: bold;
   font-size: 1.0em;
-  padding: 0.2em;
+  padding: 0.7em;
   text-transform: capitalize;
   text-align: center;
   max-width: 200px;
@@ -156,4 +159,12 @@
   border-left: 0.1em solid #ed832d;
   border-right: 0.1em solid #ed832d;
   border-bottom: 0.1em solid #ed832d;
+}
+
+.exercise-edit-link {
+  color: whitesmoke !important;
+  i {
+    color: whitesmoke !important;
+    font-size: 1.2em;
+  }
 }

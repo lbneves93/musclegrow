@@ -117,4 +117,72 @@ RSpec.describe 'Exercises', type: :request do
       end
     end
   end
+
+  describe 'UPDATE exercise' do
+    subject(:put_exercise) { put exercise_path(params) }
+
+    before { sign_in admin_user }
+
+    let(:exercise_category_id) { create(:exercise_category, name: 'New Category').id }
+    let(:exercise_name) { 'Treadmill' }
+    let(:exercise_img_url) { FFaker::Image.url }
+    let(:exercise) { create(:exercise, name: 'Bike') }
+
+    let(:params) do
+      {
+        id: exercise.id,
+        exercise: {
+          name: exercise_name,
+          img_url: exercise_img_url,
+          exercise_category_id:
+        }
+      }
+    end
+
+    context 'with valid params' do
+      it 'returns http status 302' do
+        put_exercise
+        expect(response).to have_http_status(:redirect)
+      end
+
+      it 'updates exercise with success' do
+        put_exercise
+        expect(exercise.reload).to have_attributes(name: 'Treadmill', img_url: exercise_img_url,
+                                                   exercise_category_id:)
+      end
+    end
+
+    context 'without exercise_category_id' do
+      let(:exercise_category_id) { nil }
+
+      it 'returns http status 422' do
+        put_exercise
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'not changes exercise' do
+        put_exercise
+        expect(exercise.reload).to have_attributes(name: 'Bike')
+      end
+    end
+
+    context 'when exercise already exists' do
+      before do
+        create(:exercise, name: 'Treadmill', img_url: exercise_img_url, exercise_category_id:)
+      end
+
+      it 'returns http status 422' do
+        put_exercise
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+
+    context 'when current user is not an admin' do
+      before { sign_in athlete_user }
+
+      it 'raises CanCan::AccessDenied exception' do
+        expect { put_exercise }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+  end
 end

@@ -26,6 +26,11 @@
                     data: { url: "#{exercise.img_url}" }) do %>
                     <%= exercise.name %>
                   <% end %>
+                  <% if can? :manage, Exercise %>
+                    <%= link_to edit_exercise_path(exercise), class: 'exercise-edit-link' do %>
+                      <i class="bi bi-pencil-square"></i>
+                    <% end %>
+                  <% end %>
                 </div>
                 <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>
               </div>

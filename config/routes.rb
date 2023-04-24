@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   # Defines home as root path route ("/")
   root 'home#index'
 
-  resources :exercises, only: %i[index create edit new]
+  resources :exercises, only: %i[index create update edit new]
   resources :training_plans, only: %i[update]
 end

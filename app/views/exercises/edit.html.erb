@@ -1,1 +1,9 @@
-<h1>EDIT EXERCISE</h1>
+<div class="new-exercise-div">
+  <div class="exercise-form-header">
+    <i class="bi bi-pencil-square"></i>
+    <span>Edit Exercise</span>
+  </div>
+  <div class="exercise-form-body">
+    <%= render "form", exercise: @exercise, category_options: @category_options %>
+  </div>
+</div>
