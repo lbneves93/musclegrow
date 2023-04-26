@@ -60,10 +60,10 @@ export default class extends Controller {
     else {
       this.exercisesOfDay.forEach((exercise) => {
         let exerciseCardHtml = `<div class="exercise-card">
-                                  <div class="exercise-name" data-day="${this.currentDay}" data-name="${exercise.name}" data-url="${exercise.url}">
+                                  <div class="exercise-name justify-content-center" data-day="${this.currentDay}" data-name="${exercise.name}" data-url="${exercise.url}">
                                     ${exercise.name}
                                   </div>
-                                  <div><img style="width: 200px; height: 150px" src="${exercise.url}"></img></div>
+                                  <div><img style="width: 250px; height: 175px" src="${exercise.url}"></img></div>
                               </div>` 
         
         document.getElementById(`block-exercises-${this.currentDay}`).innerHTML += exerciseCardHtml;

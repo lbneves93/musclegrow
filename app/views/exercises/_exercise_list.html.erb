@@ -10,7 +10,7 @@
           <div class="exercises-in-category accordion-body">
             <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
               <div class="exercise-card">
-                <div class="exercise-name">
+                <div class="exercise-name <%= current_user.admin? ? 'exercise-name-admin' : 'exercise-name-athletes' %>">
                   <% if defined?(with_checkbox) && with_checkbox %>
                     <%= check_box_tag(
                       "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
@@ -37,7 +37,7 @@
                     </div>  
                   <% end %>
                 </div>
-                <div><%= image_tag("#{exercise.img_url}", { style: "width: 200px; height: 150px" })%></div>
+                <div><%= image_tag("#{exercise.img_url}", { style: "width: 250px; height: 175px" })%></div>
               </div>
             <% end %>
           </div> 
