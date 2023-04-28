@@ -35,5 +35,7 @@ echo 'Assets Compiled... Time:' $(date) >> ../musclegrow-service.log
 
 # Start Application
 echo 'Restarting Application... Time:' $(date) >> ../musclegrow-service.log
+docker-compose down
+docker container prune -f
 docker-compose up -d $app_env
 echo 'Application Up... Time:' $(date) >> ../musclegrow-service.log
