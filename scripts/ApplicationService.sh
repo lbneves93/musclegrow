@@ -1,6 +1,7 @@
 #!/bin/bash
 cd /var/app/current
 echo > ../musclegrow-service.log
+
 # Stop Application
 echo 'Application Stopping... Time:' $(date) >> ../musclegrow-service.log
 docker-compose down
@@ -32,8 +33,7 @@ echo 'Compiling Assets... Time:' $(date) >> ../musclegrow-service.log
 docker-compose run $app_env rails assets:precompile
 echo 'Assets Compiled... Time:' $(date) >> ../musclegrow-service.log
 
+# Start Application
 echo 'Restarting Application... Time:' $(date) >> ../musclegrow-service.log
-docker-compose down
-docker container prune -f
 docker-compose up -d $app_env
 echo 'Application Up... Time:' $(date) >> ../musclegrow-service.log
