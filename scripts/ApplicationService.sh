@@ -1,41 +1,40 @@
 #!/bin/bash
 cd /var/app/current
-echo > ../musclegrow-service.log
 
 # Stop Application
-echo 'Application Stopping... Time:' $(date) >> ../musclegrow-service.log
+echo 'Application Stopping...'
 docker-compose down
 docker container prune -f
-echo 'Application Stopped... Time:' $(date) >> ../musclegrow-service.log
+echo 'Application Stopped...'
 
 # Config Application
 git pull
 app_env=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.RAILS_ENV')
-echo 'Create Rails Master Key File... Time:' $(date) >> ../musclegrow-service.log
+echo 'Create Rails Master Key File...'
 master_key=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.RAILS_MASTER_KEY')
 echo $master_key > config/master.key
-echo 'Log in Docker Hub... Time:' $(date) >> ../musclegrow-service.log
+echo 'Log in Docker Hub...'
 dockerhub_user=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.DOCKERHUB_USER')
 dockerhub_pass=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.DOCKERHUB_PASS')
 docker login --username $dockerhub_user --password $dockerhub_pass
-echo 'Docker Hub logged... Time:' $(date) >> ../musclegrow-service.log
+echo 'Docker Hub logged...'
 app_env=$(/opt/elasticbeanstalk/bin/get-config environment | jq -r '.RAILS_ENV')
-echo 'Docker Building container... Time:' $(date) >> ../musclegrow-service.log
+echo 'Docker Building container'
 docker-compose build $app_env
-echo 'Docker Builded... Time:' $(date) >> ../musclegrow-service.log
-echo 'Running Bundle... Time:' $(date) >> ../musclegrow-service.log
+echo 'Docker Builded...'
+echo 'Running Bundle...'
 docker-compose run $app_env bundle
-echo 'Bundle finished... Time:' $(date) >> ../musclegrow-service.log
-echo 'DB migrating... Time:' $(date) >> ../musclegrow-service.log
+echo 'Bundle finished...'
+echo 'DB migrating...'
 docker-compose run $app_env rails db:migrate
-echo 'DB migrated... Time:' $(date) >> ../musclegrow-service.log
-echo 'Compiling Assets... Time:' $(date) >> ../musclegrow-service.log
+echo 'DB migrated...'
+echo 'Compiling Assets...'
 docker-compose run $app_env rails assets:precompile
-echo 'Assets Compiled... Time:' $(date) >> ../musclegrow-service.log
+echo 'Assets Compiled...'
 
 # Start Application
-echo 'Restarting Application... Time:' $(date) >> ../musclegrow-service.log
+echo 'Restarting Application...'
 docker-compose down
 docker container prune -f
-docker-compose up -d $app_env
-echo 'Application Up... Time:' $(date) >> ../musclegrow-service.log
+docker-compose up $app_env
+echo 'Application Down...'
