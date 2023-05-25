@@ -6,8 +6,7 @@ class ExercisesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @exercises = Exercise.all
-    @exercises_categories = ExerciseCategory.all
+    @exercises_categories = ExerciseCategory.preload(:exercises).order(:name)
   end
 
   def new

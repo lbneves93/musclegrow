@@ -2,11 +2,14 @@ version: "3.3"
 volumes:
   gems_musclegrow:
 
+networks:
+  net_musclegrow:
+  
 services:
   web: 
     build: .
-    links:
-      - db:dbhost
+    environment:
+      MEMCACHED_SERVER: memcached:11211
     volumes:
       - gems_musclegrow:/usr/local/bundle
       - .:/app
@@ -15,6 +18,11 @@ services:
     stdin_open: true
     tty: true
     command: bash -c "rm -f tmp/pids/server.pid; rails s -p 3000 -b '0.0.0.0'"
+    networks: 
+      - net_musclegrow
+    depends_on:
+      - db
+      - memcached
   
   staging:
     build: .
@@ -27,6 +35,8 @@ services:
     ports:
       - "80:3000"
     command: bash -c "rm -f tmp/pids/server.pid; rails s -p 3000 -b '0.0.0.0'"
+    networks: 
+      - net_musclegrow
 
   db:
     image: postgres:15.2
@@ -35,4 +45,10 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: mypass
-  
+    networks: 
+      - net_musclegrow
+    
+  memcached:
+    image: memcached:alpine
+    networks: 
+      - net_musclegrow

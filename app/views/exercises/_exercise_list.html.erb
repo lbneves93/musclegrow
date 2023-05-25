@@ -8,38 +8,40 @@
         </h2>
         <div id="category-<%= index %>" class="accordion-collapse collapse <%= index.zero? ? 'show': '' %>" aria-labelledby="heading-<%= index %>" data-bs-parent="#accordionExercises">
           <div class="exercises-in-category accordion-body">
-            <% @exercises.where(exercise_category_id: category.id).each do |exercise| %>
-              <div class="exercise-card">
-                <div class="exercise-name <%= current_user.admin? ? 'exercise-name-admin' : 'exercise-name-athletes' %>">
-                  <% if defined?(with_checkbox) && with_checkbox %>
-                    <%= check_box_tag(
-                      "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
-                      'yes', 
-                      false,
-                      name: 'exercise-checkbox',
-                      class: 'form-check-input',
-                      data: { action: 'click->exercises#changeCheckExercise' }) %>
-                  <% end %>    
-                  <%= content_tag(
-                    :span,
-                    id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",
-                    data: { url: "#{exercise.img_url}" }) do %>
-                    <%= exercise.name %>
-                  <% end %>
-                  <% if can? :manage, Exercise %>
-                    <div class="exercise-actions">
-                      <%= link_to edit_exercise_path(exercise) do %>
-                        <i class="bi bi-pencil-square"></i>
-                      <% end %>
-                      <%= link_to exercise_path(exercise), data: { turbo_method: :delete, turbo_confirm: 'Are you sure do you want delete exercise?' } do %>
-                        <i class="bi bi-trash-fill"></i>
-                      <% end %>
-                    </div>  
-                  <% end %>
+            <% cache category do %>
+              <% category.exercises.each do |exercise| %>
+                <div class="exercise-card">
+                  <div class="exercise-name <%= current_user.admin? ? 'exercise-name-admin' : 'exercise-name-athletes' %>">
+                    <% if defined?(with_checkbox) && with_checkbox %>
+                      <%= check_box_tag(
+                        "exercise-#{exercise.name.downcase.gsub(' ', '-')}", 
+                        'yes', 
+                        false,
+                        name: 'exercise-checkbox',
+                        class: 'form-check-input',
+                        data: { action: 'click->exercises#changeCheckExercise' }) %>
+                    <% end %>    
+                    <%= content_tag(
+                      :span,
+                      id: "img-url-#{exercise.name.downcase.gsub(' ', '-')}",
+                      data: { url: "#{exercise.img_url}" }) do %>
+                      <%= exercise.name %>
+                    <% end %>
+                    <% if can? :manage, Exercise %>
+                      <div class="exercise-actions">
+                        <%= link_to edit_exercise_path(exercise) do %>
+                          <i class="bi bi-pencil-square"></i>
+                        <% end %>
+                        <%= link_to exercise_path(exercise), data: { turbo_method: :delete, turbo_confirm: 'Are you sure do you want delete exercise?' } do %>
+                          <i class="bi bi-trash-fill"></i>
+                        <% end %>
+                      </div>  
+                    <% end %>
+                  </div>
+                  <div><%= image_tag("#{exercise.img_url}", { style: "width: 250px; height: 175px" })%></div>
                 </div>
-                <div><%= image_tag("#{exercise.img_url}", { style: "width: 250px; height: 175px" })%></div>
-              </div>
-            <% end %>
+              <% end %>
+            <% end %>  
           </div> 
         </div>
       </div>
