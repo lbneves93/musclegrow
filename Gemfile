@@ -56,7 +56,7 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'cancancan'
 gem 'devise'
 
-# High performance pure Ruby client for accessing memcached servers. 
+# High performance pure Ruby client for accessing memcached servers.
 gem 'dalli'
 
 group :development, :test do
